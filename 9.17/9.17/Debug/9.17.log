@@ -1,7 +1,0 @@
-﻿  stl.cpp
-D:\Ccode\9.17\9.17\stl.cpp(54,9): error C2374: “s1”: 重定义；多次初始化
-D:\Ccode\9.17\9.17\stl.cpp(49): message : 参见“s1”的声明
-D:\Ccode\9.17\9.17\stl.cpp(54,18): error C2086: “std::string s2”: 重定义
-D:\Ccode\9.17\9.17\stl.cpp(50): message : 参见“s2”的声明
-D:\Ccode\9.17\9.17\stl.cpp(54,22): error C2374: “s3”: 重定义；多次初始化
-D:\Ccode\9.17\9.17\stl.cpp(51): message : 参见“s3”的声明

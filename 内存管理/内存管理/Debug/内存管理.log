@@ -1,0 +1,7 @@
+﻿  Test.cpp
+D:\cpp\内存管理\内存管理\Test.cpp(152,9): warning C4101: “f”: 未引用的局部变量
+D:\cpp\内存管理\内存管理\Test.cpp(152,18): warning C4101: “i”: 未引用的局部变量
+D:\cpp\内存管理\内存管理\Test.cpp(152,15): warning C4101: “j”: 未引用的局部变量
+D:\cpp\内存管理\内存管理\Test.cpp(152,6): warning C4101: “c”: 未引用的局部变量
+D:\cpp\内存管理\内存管理\Test.cpp(152,12): warning C4101: “h”: 未引用的局部变量
+  内存管理.vcxproj -> D:\cpp\内存管理\Debug\内存管理.exe

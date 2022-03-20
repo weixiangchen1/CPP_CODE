@@ -11,6 +11,7 @@
 
 比如：
 
+
 ![image-20220119220452309](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220119220452309.png)
 
 rand是在stdlib.h中包含的一个函数，上面代码使用rand作为一个整型变量，就会造成**命名冲突**。

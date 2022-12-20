@@ -4,13 +4,13 @@
 template<class K, class V>
 struct AVLTreeNode
 {
-	// Èı²æÁ´½á¹¹
+	// ä¸‰å‰é“¾ç»“æ„
 	AVLTreeNode<K, V>* _left;
 	AVLTreeNode<K, V>* _right;
 	AVLTreeNode<K, V>* _parent;
 	pair<K, V> _kv;
 
-	int _bf; // balance factor ÓÒ×ÓÊ÷-×ó×ÓÊ÷
+	int _bf; // balance factor å³å­æ ‘-å·¦å­æ ‘
 
 	AVLTreeNode(const pair<K, V>& kv)
 		:_left(nullptr)
@@ -26,20 +26,24 @@ class AVLTree
 {
 	typedef AVLTreeNode<K, V> Node;
 public:
+	// æ„é€ å‡½æ•°
 	AVLTree()
 		:_root(nullptr)
 	{}
-
+	
+	// ä¸­åºéå†
 	void Inorder()
 	{
 		_Inorder(_root);
 	}
-
+	
+	// åˆ¤æ–­æ˜¯å¦ä¸ºå¹³è¡¡æœç´¢äºŒå‰æ ‘
 	bool IsBalance()
 	{
 		return _IsBalance(_root);
 	}
-
+	
+	// æ’å…¥èŠ‚ç‚¹
 	bool Insert(const pair<K, V>& kv)
 	{
 		if (_root == nullptr)
@@ -47,7 +51,7 @@ public:
 			_root = new Node(kv);
 		}
 
-		// Ñ°ÕÒĞÂ½áµãËùÔÚÎ»ÖÃ
+		// å¯»æ‰¾æ–°ç»“ç‚¹æ‰€åœ¨ä½ç½®
 		Node* parent = nullptr;
 		Node* cur = _root;
 		while (cur)
@@ -80,10 +84,10 @@ public:
 			cur->_parent = parent;
 		}
 
-		// ¿ØÖÆÆ½ºâÒò×Ó
+		// æ§åˆ¶å¹³è¡¡å› å­
 		while (parent)
 		{
-			// ¸üĞÂÆ½ºâÒò×Ó
+			// æ›´æ–°å¹³è¡¡å› å­
 			if (cur == parent->_right)
 			{
 				parent->_bf++;
@@ -95,20 +99,20 @@ public:
 
 			if (parent->_bf == 0)
 			{
-				// ½áµãµÄÆ½ºâÒò×Ó¸üĞÂÎª0£¬ËµÃ÷Ö®Ç°µÄÆ½ºâÒò×ÓÎª1»òÕß-1
-				// ±íÊ¾µÍµÄÒ»±ß±»ÌîÉÏ£¬Ô­×ÓÊ÷¸ß¶È²»±ä£¬ÔòÎŞĞè¼ÌĞø¸üĞÂ
+				// ç»“ç‚¹çš„å¹³è¡¡å› å­æ›´æ–°ä¸º0ï¼Œè¯´æ˜ä¹‹å‰çš„å¹³è¡¡å› å­ä¸º1æˆ–è€…-1
+				// è¡¨ç¤ºä½çš„ä¸€è¾¹è¢«å¡«ä¸Šï¼ŒåŸå­æ ‘é«˜åº¦ä¸å˜ï¼Œåˆ™æ— éœ€ç»§ç»­æ›´æ–°
 				break;
 			}
 			else if (parent->_bf == -1 || parent->_bf == 1)
 			{
-				// ½áµãµÄÆ½ºâÒò×Ó¸üĞÂÎª1£¬ËµÃ÷Ö®Ç°µÄÆ½ºâÒò×ÓÎª0
-				// ×ÓÊ÷µÄ¸ß¶È±ä¸ßÁË£¬ĞèÒª¼ÌĞøÏòÉÏ¸üĞÂ
+				// ç»“ç‚¹çš„å¹³è¡¡å› å­æ›´æ–°ä¸º1ï¼Œè¯´æ˜ä¹‹å‰çš„å¹³è¡¡å› å­ä¸º0
+				// å­æ ‘çš„é«˜åº¦å˜é«˜äº†ï¼Œéœ€è¦ç»§ç»­å‘ä¸Šæ›´æ–°
 				cur = parent;
 				parent = parent->_parent;
 			}
 			else if (parent->_bf == -2 || parent->_bf == 2)
 			{
-				// ×ÓÊ÷²»Æ½ºâ£¬ĞèÒªĞı×ª´¦Àí
+				// å­æ ‘ä¸å¹³è¡¡ï¼Œéœ€è¦æ—‹è½¬å¤„ç†
 				if (parent->_bf == -2 && cur->_bf == -1)
 				{
 					RotateR(parent);
@@ -141,6 +145,7 @@ public:
 	}
 
 private:
+	// AVLTree å³æ—‹
 	void RotateR(Node* parent)
 	{
 		Node* subL = parent->_left;
@@ -174,7 +179,8 @@ private:
 
 		subL->_bf = parent->_bf = 0;
 	}
-
+	
+	// AVLTree å·¦æ—‹
 	void RotateL(Node* parent)
 	{
 		Node* subR = parent->_right;
@@ -299,14 +305,14 @@ private:
 		if (root == NULL)
 			return true;
 
-		// ¶Ôµ±Ç°Ê÷½øĞĞ¼ì²é
+		// å¯¹å½“å‰æ ‘è¿›è¡Œæ£€æŸ¥
 		int leftHeight = Height(root->_left);
 		int rightHeight = Height(root->_right);
 
 		if (rightHeight - leftHeight != root->_bf)
 		{
-			cout << root->_kv.first << "ÏÖÔÚÊÇ:" << root->_bf << endl;
-			cout << root->_kv.first << "Ó¦¸ÃÊÇ:" << rightHeight - leftHeight << endl;
+			cout << root->_kv.first << "ç°åœ¨æ˜¯:" << root->_bf << endl;
+			cout << root->_kv.first << "åº”è¯¥æ˜¯:" << rightHeight - leftHeight << endl;
 			return false;
 		}
 

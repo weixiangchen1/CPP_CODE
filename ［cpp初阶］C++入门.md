@@ -11,6 +11,7 @@
 
 rand是在stdlib.h中包含的一个函数，上面代码使用rand作为一个整型变量，就会造成**命名冲突**。
 
+
 这个问题用命名空间就可以的到很好解决：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/5804197a5b9e4142aa8d8fbde2bf8693.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6L-Y5bCP57uZ5Liq6Z2i5a2Q,size_20,color_FFFFFF,t_70,g_se,x_16)
 定义命名空间，需要用到**namespace**关键字，后面跟**命名空间的名字**，然后接一对花括号，花括号中是命名空间的成员。命名空间的成员既可以是变量，也可以是函数。
